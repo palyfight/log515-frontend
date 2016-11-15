@@ -1,0 +1,12 @@
+.properties-image {
+  width: 345px;
+  height: 140px
+}
+
+.panel .panel-sub-heading {
+  border-radius: 0 0 0 0;
+}
+
+.panel .table tr {
+  cursor: pointer;
+}

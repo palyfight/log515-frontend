@@ -3,6 +3,7 @@ import Signup from './components/Signup.vue';
 import Login from './components/Login.vue';
 import DashboardIndex from './components/Dashboard/Index.vue';
 import PropertiesIndex from './components/Properties/Index.vue';
+import MessagesIndex from './components/Messages/Index.vue';
 import auth from './services/auth';
 
 class Router {
@@ -40,6 +41,10 @@ class Router {
             component: PropertiesIndex,
             auth: true
           },
+          '/messages': {
+            component: MessagesIndex,
+            auth: true
+          }
         }
       }
     })
