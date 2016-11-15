@@ -17,6 +17,26 @@ export default {
   },
 
   methods: {
+
+    getProperties () {
+      const userId = localStorage.getItem('userId');
+
+      Property.getProperties( userId )
+      .then((response) => {
+        let properties = _.map(response.data, (property) => {
+          this.properties.push({
+            "id": property.id,
+            "postalCode": property.postalCode,
+            "nbAppartments": property.nbAppartments,
+            "description" : property.description,
+          });
+        });
+      })
+      .catch((error) => {
+        this.$dispatch('app-error', { title: 'Internal Error', text: 'Please communicate with our support team' });
+      })
+    },
+
     addProperty () {
       const userId = localStorage.getItem('userId')
 
