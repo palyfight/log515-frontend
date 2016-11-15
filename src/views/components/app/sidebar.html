@@ -1,0 +1,25 @@
+<!-- Sidebar -->
+<ul class="nav navbar-nav side-nav" id="sidebar">
+  <li class="collapsed-content">
+    <ul>
+      <li class="search"><!-- Collapsed search pasting here at 768px --></li>
+    </ul>
+  </li>
+  <li class="navigation" id="navigation">
+    <a href="#" class="sidebar-toggle" data-toggle="#navigation">Navigation <i class="fa fa-angle-up"></i></a>
+    <ul class="menu">
+      <li>
+        <a v-link="{path: '/admin/dashboard', activeClass: 'active'}">
+          <i class="fa fa-tachometer"></i> Dashboard
+          <span class="badge badge-red">1</span>
+        </a>
+      </li>
+      <li>
+        <a v-link="{path: '/admin/properties', activeClass: 'active'}">
+          <i class="fa fa-home"></i> Properties
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+<!-- Sidebar end -->

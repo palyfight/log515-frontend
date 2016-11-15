@@ -2,6 +2,7 @@ import Admin from './components/Admin.vue';
 import Signup from './components/Signup.vue';
 import Login from './components/Login.vue';
 import DashboardIndex from './components/Dashboard/Index.vue';
+import PropertiesIndex from './components/Properties/Index.vue';
 import auth from './services/auth';
 
 class Router {
@@ -33,6 +34,10 @@ class Router {
         subRoutes: {
           '/dashboard': {
             component: DashboardIndex,
+            auth: true
+          },
+          '/properties': {
+            component: PropertiesIndex,
             auth: true
           },
         }
