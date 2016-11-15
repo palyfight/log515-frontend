@@ -50,7 +50,7 @@ class Router {
         transition.redirect('/login')
       }
 
-      // If the user doesn't have a shop yet and is trying to access any page in the admin
+      /*// If the user doesn't have a shop yet and is trying to access any page in the admin
       // redirect the user to the shop creation page
       if (transition.to.path !== '/admin/properties/new' && transition.to.auth && !auth.hasProperties()) {
         transition.redirect('/admin/properties/new')
@@ -60,7 +60,7 @@ class Router {
       // signup page.
       if ((transition.to.path === '/login' || transition.to.path === '/signup') && auth.isAuthenticated()) {
         transition.redirect('/admin/dashboard')
-      }
+      }*/
 
       transition.next()
     });

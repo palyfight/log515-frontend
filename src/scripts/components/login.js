@@ -17,6 +17,7 @@ export default {
 
   methods: {
     submit () {
+      console.log(this.user);
       this.shopLoginSubmitted = true;
       var credentials = {
         user: {
@@ -24,7 +25,8 @@ export default {
           password: this.user.password
         }
       }
-      
+
+
       const hasErrors = this.$loginValidation.errors && this.$loginValidation.errors.length > 0;
 
       if (!hasErrors) {
@@ -46,4 +48,3 @@ export default {
     }
   }
 }
-

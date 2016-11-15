@@ -1,44 +1,39 @@
-<div class="login-content">  
-  <!-- Login -->
-  <div class="lc-block" id="l-login">
-    <div class="login-content-heading m-b-20">
-      <img src="dist/assets/img/karzen_logo.png" alt="karzen-logo" width="269px" height="70px">
-      <br/>
-      <span>Welcome Back</span>
+<div id="wrap">
+  <!-- Make page fluid -->
+  <div class="row">
+    <!-- Page content -->
+    <div id="content" class="col-md-12 full-page login">
+      <div class="inside-block">
+        <img src="assets/images/logo-big.png" alt class="logo">
+        <h1><strong>L & T</strong> COMM</h1>
+        <h5>The easy way to communicate</h5>
+        
+        <form novalidate v-on:submit.prevent>
+          <section>
+            <div class="input-group">
+              <input type="email" v-model="user.email" field="user.email" class="form-control" name="email"/>
+              <div class="input-group-addon"><i class="fa fa-user"></i></div>
+            </div>
+            <div class="input-group">
+              <input type="password" v-model="user.password" field="user.password" class="form-control" name="password"/>
+              <div class="input-group-addon"><i class="fa fa-key"></i></div>
+            </div>
+          </section>
+          <section class="controls">
+            <div class="checkbox check-transparent">
+              <input type="checkbox" value="1" id="remember" checked>
+              <label for="remember">Remember me</label>
+            </div>
+            <a href="#">Forget password?</a>
+          </section>
+          <section class="log-in">
+            <button class="btn btn-greensea" @click="submit()">Login</button>
+            <span>or</span>
+            <a v-link="{name: 'signup'}" class="btn btn-slategray" data-ma-block="#l-register">Register</a>
+          </section>
+        </form>
+      </div>
     </div>
-    <validator name="loginValidation" @touched="onTouched">
-      <form novalidate v-on:submit.prevent>
-        <error-messages></error-messages>
-        <div  id="error-messages" class="alert alert-danger" v-show="shopLoginSubmitted && $loginValidation.invalid">
-          <ul>
-            <li v-for="error in $loginValidation.errors">
-              <p>{{error.message}}</p>
-            </li>
-          </ul>
-        </div>
-        <div class="lcb-form p-relative">
-            <div class="input-group fg-float m-b-20">
-              <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
-              <div class="fg-line" v-bind:class="{'fg-toggled': user.email != '' }">
-                  <input type="email" v-model="user.email" field="user.email" v-validate:Email="{ required: { rule: true, message: 'Email is required' }, email: { rule: true, message: 'Email is invalid' } }" class="form-control" name="email"/>
-                  <label class="fg-label">Username / Email</label>
-              </div>
-            </div>
-            <div class="input-group fg-float m-b-20">
-              <span class="input-group-addon"><i class="zmdi zmdi-key"></i></span>
-              <div class="fg-line" v-bind:class="{'fg-toggled': user.password != '' }">
-                  <input type="password" v-model="user.password" field="user.password" v-validate:Password="{required: { rule: true, message: 'A password is required' }, minlength: { rule: 8, message: 'The password needs to be at least 8 characters long.' } }" class="form-control" name="password"/>
-                  <label class="fg-label">Password</label>
-              </div>
-            </div>
-            <button class="btn btn-login btn-success btn-float" @click="submit()"><i class="zmdi zmdi-arrow-forward"></i></button>
-        </div>
-
-        <div class="lcb-navigation">
-            <a v-link="{name: 'signup'}" data-ma-block="#l-register"><i class="zmdi zmdi-plus"></i> <span>Register</span></a>
-        </div>
-      </form>
-    </validator>
+    <!-- /Page content -->
   </div>
 </div>
-
