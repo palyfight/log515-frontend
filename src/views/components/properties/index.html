@@ -10,56 +10,61 @@
           <!-- tile body -->
           <div class="tile-body">
             <div class="row">
-              <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">4470 RUE SOLIDARNOSC H1R3X6</h3>
+              <div v-for="property in properties" track-by="$index">
+                <div class="col-lg-3 col-md-6">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">{{ property.address }} {{ property.postalCode }}</h3>
+                    </div>
+                    <div class="panel-body">
+                      <img class="properties-image" src="https://www.socalgas.com/1435348734875/energy_upgrade_california_home_upgrade-0802-1024.jpg" />
+                    </div>
+                    <div class="panel-heading panel-sub-heading">
+                      <h3 class="panel-title">TENANTS</h3>
+                    </div>
+                    <!-- Table -->
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Address</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr @click="showTenant(1)">
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr @click="showTenant(1)">
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr @click="showTenant(1)">
+                            <td>3</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                          <tr @click="showTenant(1)">
+                            <td>4</td>
+                            <td>Ici</td>
+                            <td>Kamarel</td>
+                            <td>@icko</td>
+                          </tr>
+                        </tbody>
+                      </table>
                   </div>
-                  <div class="panel-body">
-                    <img class="properties-image" src="https://www.socalgas.com/1435348734875/energy_upgrade_california_home_upgrade-0802-1024.jpg" />
-                  </div>
-                  <div class="panel-heading panel-sub-heading">
-                    <h3 class="panel-title">TENANTS</h3>
-                  </div>
-                  <!-- Table -->
-                  <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Address</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Phone</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr @click="showTenant(1)">
-                          <td>1</td>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr @click="showTenant(1)">
-                          <td>2</td>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr @click="showTenant(1)">
-                          <td>3</td>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                        <tr @click="showTenant(1)">
-                          <td>4</td>
-                          <td>Ici</td>
-                          <td>Kamarel</td>
-                          <td>@icko</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div>
               </div>
+            </div>
+            <div v-if="properties.length == 0">
+              <h1>No Properties</h1>
+            </div>
           </div>
           <!-- /tile body -->
         </section>

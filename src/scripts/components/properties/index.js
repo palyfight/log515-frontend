@@ -1,9 +1,12 @@
+import Property from '../../services/property';
+
 export default {
   ready () {
   },
 
   data () {
     return {
+      properties: [],
       property: {
         address: '',
         postalCode: '',
@@ -15,13 +18,22 @@ export default {
 
   methods: {
     addProperty () {
+      const userId = localStorage.getItem('userId')
+
       var property = {
         address: this.property.address,
         postalCode: this.property.postalCode,
         nbAppartments: this.property.nbAppartments,
         description: this.property.description
       }
-      console.log(property);
+
+      Property.saveProperty(userId, property)
+      .then((response) => {
+        this.properties.push(property);
+      })
+      .catch((error) => {
+        this.$dispatch('app-error', { title: 'Internal Error', text: 'Please communicate with our support team' });
+      })
     }
   }
 }
