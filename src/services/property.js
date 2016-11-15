@@ -4,7 +4,7 @@ import auth from './auth'
 export default {
   saveProperty (shopId, property) {
     return new Promise((resolve, reject) => {
-      http.get(`/property/save`)
+      http.post(`/property/save`, property)
       .then((response) => {
         resolve(response);
       })
