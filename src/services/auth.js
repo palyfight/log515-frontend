@@ -6,7 +6,6 @@ export default {
   user: {
     id: null,
     authenticated: false,
-    hasShops: false
   },
 
   login (creds) {
@@ -14,9 +13,9 @@ export default {
       http.post(LOGIN_URL, creds)
       .then((response) => {
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('user_id', response.data.user_id);
-        localStorage.setItem('has_shops', response.data.has_shops);
-        localStorage.setItem('shop_name', response.data.shop_name);
+        localStorage.setItem('userId', response.data.user_id);
+        localStorage.setItem('username', response.data.username);
+        localStorage.setItem('phone', response.data.phone);
         this.user.authenticated = true;
         this.user.id = response.data.user_id;
         this.user.hasShops = response.data.has_shops;
@@ -56,10 +55,9 @@ export default {
 
   logout () {
     localStorage.removeItem('token');
-    localStorage.removeItem('user_id');
-    localStorage.removeItem('shop_id');
-    localStorage.removeItem('has_shops');
-    localStorage.removeItem('shop_name');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('username');
+    localStorage.removeItem('phone');
     this.user.authenticated = false;
     this.user.id = null;
     this.user.hasShops = false;
@@ -77,25 +75,13 @@ export default {
     return this.user.authenticated;
   },
 
-  hasShops () {
-    var hasShops = localStorage.getItem('has_shops');
-
-    if (hasShops === "true" || hasShops === true) {
-      this.user.hasShops = true;
-    } else {
-      this.user.hasShops = false;
-    }
-    return this.user.hasShops;
-  },
-
   getUserId() {
-    var user_id = localStorage.getItem('user_id')
+    var userId = localStorage.getItem('userId')
 
-    if (user_id) {
-      this.user.id = user_id
+    if (userId) {
+      this.user.id = userId
     }
 
     return this.user.id
   }
 }
-

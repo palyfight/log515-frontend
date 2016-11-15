@@ -17,7 +17,7 @@ export default {
 
   methods: {
     submit () {
-      console.log(this.user);
+
       this.shopLoginSubmitted = true;
       var credentials = {
         user: {
@@ -26,21 +26,16 @@ export default {
         }
       }
 
-
-      const hasErrors = this.$loginValidation.errors && this.$loginValidation.errors.length > 0;
-
-      if (!hasErrors) {
-        auth.login(credentials)
-        .then((response) => {
-          router.go('/dashboard')
-        })
-        .catch((error) => {
-          errors = _.map(error.data.errors, (error) => {
-            return error.message;
-          });
-          this.$broadcast('error-messages', errors);
+      auth.login(credentials)
+      .then((response) => {
+        router.go('/dashboard')
+      })
+      .catch((error) => {
+        errors = _.map(error.data.errors, (error) => {
+          return error.message;
         });
-      }
+        this.$broadcast('error-messages', errors);
+      });
     },
 
     onTouched: function (touched) {

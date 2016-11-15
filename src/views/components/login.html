@@ -1,39 +1,32 @@
-<div id="wrap">
-  <!-- Make page fluid -->
-  <div class="row">
-    <!-- Page content -->
-    <div id="content" class="col-md-12 full-page login">
-      <div class="inside-block">
-        <img src="assets/images/logo-big.png" alt class="logo">
-        <h1><strong>L & T</strong> COMM</h1>
-        <h5>The easy way to communicate</h5>
-        
-        <form novalidate v-on:submit.prevent>
-          <section>
-            <div class="input-group">
-              <input type="email" v-model="user.email" field="user.email" class="form-control" name="email"/>
-              <div class="input-group-addon"><i class="fa fa-user"></i></div>
-            </div>
-            <div class="input-group">
-              <input type="password" v-model="user.password" field="user.password" class="form-control" name="password"/>
-              <div class="input-group-addon"><i class="fa fa-key"></i></div>
-            </div>
-          </section>
-          <section class="controls">
-            <div class="checkbox check-transparent">
-              <input type="checkbox" value="1" id="remember" checked>
-              <label for="remember">Remember me</label>
-            </div>
-            <a href="#">Forget password?</a>
-          </section>
-          <section class="log-in">
-            <button class="btn btn-greensea" @click="submit()">Login</button>
-            <span>or</span>
-            <a v-link="{name: 'signup'}" class="btn btn-slategray" data-ma-block="#l-register">Register</a>
-          </section>
-        </form>
-      </div>
-    </div>
-    <!-- /Page content -->
+<div id="content" class="col-md-12 full-page login">
+  <div class="inside-block">
+    <img src="assets/images/logo-big.png" alt class="logo">
+    <h1><strong>L & T</strong> COMM</h1>
+    <h5>The easy way to communicate</h5>
+
+    <form novalidate v-on:submit.prevent>
+      <section>
+        <div class="input-group">
+          <input type="email" v-model="user.email" field="user.email" class="form-control" name="email"/>
+          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+        </div>
+        <div class="input-group">
+          <input type="password" v-model="user.password" field="user.password" class="form-control" name="password"/>
+          <div class="input-group-addon"><i class="fa fa-key"></i></div>
+        </div>
+      </section>
+      <section class="controls">
+        <div class="checkbox check-transparent">
+          <input type="checkbox" value="1" id="remember" checked>
+          <label for="remember">Remember me</label>
+        </div>
+        <a href="#">Forget password?</a>
+      </section>
+      <section class="log-in">
+        <button class="btn btn-greensea" @click="submit()">Login</button>
+        <span>or</span>
+        <a v-link="{name: 'signup'}" class="btn btn-slategray" data-ma-block="#l-register">Register</a>
+      </section>
+    </form>
   </div>
 </div>
