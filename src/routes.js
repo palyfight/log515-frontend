@@ -51,9 +51,9 @@ class Router {
     this.router.beforeEach((transition) => {
       // If the user is trying to access a page requiring authentication
       // and is not yet logged in. Redirect to the login page.
-      /*if (transition.to.auth && !auth.isAuthenticated()) {
+      if (transition.to.auth && !auth.isAuthenticated()) {
         transition.redirect('/login')
-      }*/
+      }
 
       /*// If the user doesn't have a shop yet and is trying to access any page in the admin
       // redirect the user to the shop creation page

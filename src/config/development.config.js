@@ -1,7 +1,7 @@
 var config = {
   env: 'development',
   api: {
-    base_url: '',
+    base_url: 'http://127.0.0.1:1738',
     calendar: ''
   },
   app: {

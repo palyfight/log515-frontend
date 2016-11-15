@@ -1,5 +1,5 @@
 const SIGNUP_URL = '/v1/users/register'
-const LOGIN_URL = '/v1/users/login'
+const LOGIN_URL = '/login'
 
 export default {
 
@@ -9,15 +9,17 @@ export default {
   },
 
   login (creds) {
+    console.log(creds)
     return new Promise ((resolve, reject) => {
-      http.post(LOGIN_URL, creds)
+      http.post(LOGIN_URL + '/' + creds.user.email + '/' + creds.user.password, creds)
       .then((response) => {
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('userId', response.data.user_id);
+        localStorage.setItem('userId', response.data.userId);
         localStorage.setItem('username', response.data.username);
+        localStorage.setItem('role', response.data.role);
         localStorage.setItem('phone', response.data.phone);
         this.user.authenticated = true;
-        this.user.id = response.data.user_id;
+        this.user.id = response.data.userId;
         this.user.hasShops = response.data.has_shops;
         resolve(response)
       })
