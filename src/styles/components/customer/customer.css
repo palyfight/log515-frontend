@@ -1,0 +1,44 @@
+.customer-invoice-date{
+  margin-top: 23px;
+  margin-left: 10px;
+}
+
+.customer-plate {
+  text-transform: uppercase;
+}
+
+.customer-invoice-create-new {
+  margin-top: 13px;
+}
+
+.user-profile table td.item.profile-user-infos {
+  width: 125px !important
+}
+
+.customer-vehicle-extra {
+  margin-top: 16px;
+}
+
+.vehicle-mileage-title {
+  text-align: right;
+}
+
+@media (min-width: 1200px){
+  #profile-main .pm-overview {
+    width: 230px;
+  }
+
+  #profile-main .pm-body {
+    padding-left: 230px;
+  }
+}
+
+@media (min-width: 1200px){
+	#profile-main .pm-overview {
+    width: 230px;
+	}
+
+	#profile-main .pm-body {
+    padding-left: 230px;
+	}
+}

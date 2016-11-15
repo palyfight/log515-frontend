@@ -1,0 +1,51 @@
+@media (min-width: 992px) {
+	.modal-dialog-appointment {
+	    width: 800px;
+	}
+}
+
+.modal-dialog-appointment .panel {
+  margin-bottom: 0;
+}
+
+td.fc-day-highlight {
+	background: #4e91ff !important;
+	color: #fff !important;
+}
+
+.fc-day {
+	cursor: pointer;
+}
+
+#addEventBtn {
+	top: 20px;
+	right: 20px;
+}
+
+.tooltipevent {
+	width:180px;
+	height:160px;
+	position:absolute;
+	z-index:10001;
+}
+
+.tooltipevent .card-header {
+	padding: 7px 10px;
+}
+
+.card .card-body.card-padding {
+    padding: 15px 15px;
+}
+
+.tooltipevent .card-header h5, .tooltipevent .card-header h6{
+	color: #fff;
+}
+
+.fc-event .fc-title {
+  white-space: normal;
+  width: 100%;
+}
+
+.fc-event .fc-title {
+    padding: 2px 3px;
+}

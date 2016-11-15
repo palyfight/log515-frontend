@@ -1,0 +1,13 @@
+<div v-if="!image">
+  <div class="dropzone-area" drag-over="handleDragOver">
+    <div class="dropzone-text">
+      <span class="dropzone-title">Drop logo here or click to select</span>
+      <span class="dropzone-info" v-if="help">{{ help }}</span>
+    </div>
+    <input id="logo-upload-zone" type="file" @change="onFileChange" accept="image/*">
+  </div>
+</div>
+<div class="dropzone-preview">
+  <img :src="image" />
+  <button @click="removeImage" class="btn btn-danger remove-logo-btn" v-if="image">Remove Logo</button>
+</div>

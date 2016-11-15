@@ -1,0 +1,16 @@
+<div class="main-content" v-if="displayDashboard">
+  <div class="row">
+    <shop-earnings></shop-earnings>
+  </div>
+  <div class="row">
+    <shop-customers></shop-customers>
+  </div>
+</div>
+
+<div class="main-content" v-else>
+  <div class="row">
+    <div role="alert" class="alert alert-info alert-dismissible" style="font-size: 20px;">
+      <span class="icon s7-info"></span><strong>Info!</strong> This feature has been disabled.
+    </div>
+  </div>
+</div>

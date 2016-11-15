@@ -1,0 +1,12 @@
+.dashboar-earning span {
+  font-size: 28px;
+  float: left;
+  color: #fff;
+  padding: 22px 8px 22px 15px;
+}
+
+.chart-edge {
+  margin: 20px -8px 15px -10px;
+  overflow: hidden;
+}
+

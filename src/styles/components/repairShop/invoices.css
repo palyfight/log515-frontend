@@ -1,0 +1,48 @@
+.quote-form-divider {
+    height: 0;
+    border-top: 1px solid #DDD;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.quote-form-divider span {
+    display: inline-block;
+    position: relative;
+    padding: 0 17px;
+    background-color: #ef6262;
+    color: #fff;
+    top: -11px;
+    font-size: 15px;
+}
+
+.dataTables_paginate .pagination {
+    float: right;
+}
+
+.dataTables_filter {
+    float: right;
+}
+
+.invoice-actions > i[class^="s7-"] {
+    display: block !important;
+    text-align: center;
+}
+
+.invoice-actions {
+    padding: 10px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: block;
+    color: #fff;
+    font-size: 22px;
+}
+
+.invoice-actions.last {
+    margin-bottom: 0px;
+}
+
+.remove-invoiceline-message {
+    margin-top: 10px;
+}

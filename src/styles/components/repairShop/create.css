@@ -1,0 +1,38 @@
+.client-existant-car-action button{
+  margin-top: 10px;
+}
+
+.client-new-car-action button {
+  display: block;
+  margin-top: 3px;
+}
+
+.client-new-invoice-action button {
+  display: block;
+  margin-top: 3px;
+}
+
+.owned-car-selected-radio {
+  margin-top: 11px;
+}
+
+td.price-review span {
+  display: block;
+}
+
+.quote-invoice table {
+  font-size: 18px;
+}
+
+.invoice-remove-btn {
+  margin-top: 10px;
+}
+
+.btn-quote-f-actions {
+	cursor: pointer;
+}
+
+.vehicle-extra-details {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

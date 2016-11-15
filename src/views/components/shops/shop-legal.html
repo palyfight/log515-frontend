@@ -1,0 +1,51 @@
+<validator name="shopLegalValidation">
+  <form novalidate v-on:submit.prevent data-parsley-validate class="group-border-dashed">
+    <div id="error-messages" class="alert alert-danger" v-show="shopLegalSubmitted && $shopLegalValidation.invalid">
+      <ul>
+        <li v-for="error in $shopLegalValidation.errors">
+          <p>{{error.message}}</p>
+        </li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group fg-float m-b-25">      
+            <div class="fg-line" v-bind:class="{'fg-toggled': legal.incorporation != '' }">
+              <input type="text" v-model="legal.incorporation" field="legal.incorporation" v-validate:IncorporationNumber="{ required: { rule: true, message: 'Shop incorporation number is required' } }" class="form-control fg-input input-lg" name="incorporation"/>
+              <label class="fg-label">Incorporation Number <sup class="text-danger">Required</sup></label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group fg-float m-b-25">      
+            <div class="fg-line" v-bind:class="{'fg-toggled': legal.gst != '' }">
+              <input type="text" v-model="legal.gst" field="legal.gst" v-validate:TaxGST="{ required: { rule: true, message: 'GST/HST is required' } }" class="form-control fg-input input-lg" name="gst"/>
+              <label class="fg-label">GST/HST No. <sup class="text-danger">Required</sup></label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group fg-float m-b-25">      
+            <div class="fg-line" v-bind:class="{'fg-toggled': legal.qst != '' }">
+              <input type="text" v-model="legal.qst" field="legal.qst" v-validate:TaxQST="{ required: { rule: true, message: 'QST is required' } }" class="form-control fg-input input-lg" name="qst"/>
+              <label class="fg-label">QST No. <sup class="text-danger">Required</sup></label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group fg-float m-b-25">
+            <div class="fg-line" v-bind:class="{'fg-toggled': legal.disclaimer != '' }">
+              <textarea v-model="legal.disclaimer" field="legal.disclaimer" class="form-control input-lg" name="disclaimer" rows="5"></textarea>
+              <label class="fg-label">Disclaimer</label>
+            </div>
+          </div>
+        </div>
+         <div class="spacer text-right">
+          <button class="btn-shop-info btn btn-primary pull-right" @click="updateShopLegal()">Update Legal</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</validator>
+

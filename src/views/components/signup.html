@@ -1,0 +1,68 @@
+<div class="login-content"> 
+<!-- Register -->
+  <div class="lc-block" id="l-register">
+    <div class="login-content-heading m-b-20">
+      <img src="dist/assets/img/karzen_logo.png" alt="karzen-logo" width="269px" height="70px">
+      <br/>
+      <span>Get an account, we provide simplicity</span>
+    </div>
+    <validator name="signupValidation" @touched="onTouched">
+      <form class="form-horizontal" novalidate v-on:submit.prevent>
+        <error-messages></error-messages>
+        <div  id="error-messages" class="alert alert-danger" v-show="shopSignupSubmitted && $signupValidation.invalid">
+          <ul>
+            <li v-for="error in $signupValidation.errors">
+              <p>{{error.message}}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="lcb-form p-relative">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="input-group fg-float m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                <div class="fg-line" v-bind:class="{'fg-toggled': user.firstName != '' }">
+                    <input v-model="user.firstName" name="firstName" field="user.firstName" v-validate:Firstname="{ required: { rule: true, message: 'First Name is required' } }" type="text" class="form-control"/>
+                    <label class="fg-label">First Name</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="input-group fg-float m-b-20">
+                <span class="input-group-addon last"><i class="zmdi zmdi-account"></i></span>
+                <div class="fg-line" v-bind:class="{'fg-toggled': user.lastName != '' }">
+                    <input v-model="user.lastName" name="lastName" field="user.lastName" v-validate:Lastname="{ required: { rule: true, message: 'Last Name is required' } }" type="text" class="form-control"/>
+                    <label class="fg-label">Last Name</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="input-group fg-float m-b-20">
+            <span class="input-group-addon last"><i class="zmdi zmdi-email"></i></span>
+            <div class="fg-line" v-bind:class="{'fg-toggled': user.email != '' }">
+              <input v-model="user.email" name="email" field="user.email" v-validate:Email="{ required: { rule: true, message: 'Email is required' }, email: { rule: true, message: 'Email is invalid' } }" type="email" class="form-control"/>
+              <label class="fg-label">Email</label>
+            </div>
+          </div>
+          <div class="input-group fg-float m-b-20">
+            <span class="input-group-addon last"><i class="zmdi zmdi-key"></i></span>
+            <div class="fg-line" v-bind:class="{'fg-toggled': user.password != '' }">
+              <input v-model="user.password" name="password" field="user.password" v-validate:Password="{required: { rule: true, message: 'A password is required' }, minlength: { rule: 8, message: 'The password needs to be at least 8 characters long.' } }" type="password" class="form-control"/>
+              <label class="fg-label">Password</label>
+            </div>
+          </div>
+
+          <button class="btn btn-login btn-success btn-float" @click="submit()"><i class="zmdi zmdi-arrow-forward"></i></button>
+        </div>
+
+        <div class="lcb-navigation">
+          <a v-link="{name: 'login'}" data-ma-block="#l-login"><i class="zmdi zmdi-long-arrow-right"></i> <span>Log in</span></a>
+        </div>
+      </form>
+    </validator>
+    <p class="conditions m-t-20">
+      By creating an account, you agree with KarZen's &nbsp;<terms-of-service></terms-of-service>&nbsp; and &nbsp;<privacy-policy></privacy-policy>.
+    </p>
+  </div>
+</div>
+

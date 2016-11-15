@@ -1,0 +1,11 @@
+.signup-page {
+  min-height: 100%;
+}
+
+.lcb-navigation a[data-ma-block="#l-register"] {
+    width: 95px;
+}
+
+.lcb-navigation a[data-ma-block="#l-register"] span {
+  width: 100%;
+}
