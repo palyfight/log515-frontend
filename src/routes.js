@@ -2,7 +2,8 @@ import Admin from './components/Admin.vue';
 import Signup from './components/Signup.vue';
 import Login from './components/Login.vue';
 import DashboardIndex from './components/Dashboard/Index.vue';
-import PropertiesIndex from './components/Properties/Index.vue';
+import PropertiesIndex from './components/Properties/Properties.vue';
+import PropertiesShow from './components/Properties/Property.vue';
 import MessagesIndex from './components/Messages/Index.vue';
 import auth from './services/auth';
 
@@ -39,6 +40,10 @@ class Router {
           },
           '/properties': {
             component: PropertiesIndex,
+            auth: true
+          },
+          '/properties/:id': {
+            component: PropertiesShow,
             auth: true
           },
           '/messages': {

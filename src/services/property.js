@@ -12,12 +12,13 @@ export default {
         reject(error);
       })
     });
-  }
+  },
 
-  getProperties (userId) {
+  getUserProperties (userId, role) {
     return new Promise((resolve, reject) => {
-      http.get(`user/${userId}/properties/`, property)
+      http.get(`/properties`)
       .then((response) => {
+        console.log(response);
         resolve(response);
       })
       .catch((error) => {
