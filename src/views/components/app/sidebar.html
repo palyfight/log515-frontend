@@ -9,17 +9,22 @@
     <a href="#" class="sidebar-toggle" data-toggle="#navigation">Navigation <i class="fa fa-angle-up"></i></a>
     <ul class="menu">
       <li>
-        <a v-link="{path: '/admin/dashboard', activeClass: 'active'}">
+        <a v-link="{path: '/'+main_path+'/dashboard', activeClass: 'active'}">
           <i class="fa fa-tachometer"></i> Dashboard
         </a>
       </li>
       <li>
-        <a v-link="{path: '/admin/properties', activeClass: 'active'}">
-          <i class="fa fa-home"></i> Properties
+        <a v-link="{path: '/'+main_path+'/properties', activeClass: 'active'}">
+          <i class="fa fa-tachometer"></i> Properties
         </a>
       </li>
       <li>
-        <a v-link="{path: '/admin/messages', activeClass: 'active'}">
+        <a v-link="{path: '/'+main_path+'/myproperties', activeClass: 'active'}">
+          <i class="fa fa-home"></i> My Properties
+        </a>
+      </li>
+      <li>
+        <a v-link="{path: '/'+main_path+'/messages', activeClass: 'active'}">
           <i class="fa fa-envelope"></i> Message<span class="badge badge-red">5</span>
         </a>
       </li>

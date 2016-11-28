@@ -1,1 +1,65 @@
-<h1>DONE</h1>
+<!-- Page content -->
+<div id="content" class="col-md-12">
+  <div class="main">
+    <div class="row">
+      <div class="col-md-4">
+        <section class="tile transparent">
+          <div class="tile-widget color transparent-white rounded-top-corners">
+            <div class="user-card">
+              <h3><strong>{{ property.address }}</strong></h3>
+              <img class="properties-image" src="https://www.socalgas.com/1435348734875/energy_upgrade_california_home_upgrade-0802-1024.jpg" />
+            </div>
+          </div>
+          <div class="tile-body color transparent-black textured rounded-bottom-corners">
+            <ul class="inline divided social-feed">
+              <li>
+                <h4>{{ property.tenants }}</h4>
+                Tenants
+              </li>
+              <li>
+                <h4>{{ property.occupied }}</h4>
+                Occupied
+              </li>
+              <li>
+                <h4>{{ property.free }}</h4>
+                Free
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="tile color transparent-black">
+          <div class="tile-header">
+            <h1><strong>Description</strong></h1>
+          </div>
+          <div class="tile-body padding-top-0">
+            <p class="about-me">{{ property.description }}</p>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-8">
+        <section class="tile transparent">
+          <div class="tile-widget nopadding color transparent-black rounded-top-corners">
+            <ul class="nav nav-tabs tabdrop">
+              <li class="active"><a href="#feed-tab" data-toggle="tab">Occupants</a></li>
+            </ul>
+          </div>
+          <div class="tile-body tab-content rounded-bottom-corners">
+            <div id="feed-tab" class="tab-pane fade in active">
+              <div class="row" v-for="occupant in property.occupants">
+                <div class="form-group col-md-12 legend">
+                  <h4><strong>{{ occupant.username }}</strong></h4>
+                  <p>
+                    <h5><i class="fa fa-home"></i> Civil number : {{ occupant.doorNumber }}</h5>
+                    <h5><i class="fa fa-phone"></i> Phone : {{ occupant.phone }}</h5>
+                    <h5><i class="fa fa-envelope"></i> Email : {{ occupant.email }}</h5>
+                  </p>
+                  <button type="button" class="btn btn-success margin-bottom-20 pull-right"><i class="fa fa-comments-o"></i> Message occupant</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

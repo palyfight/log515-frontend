@@ -16,8 +16,12 @@ export default {
   },
 
   methods: {
-    submit () {
+    logout () {
+      auth.logout();
+      this.$route.router.go('/login');
+    },
 
+    submit () {
       this.shopLoginSubmitted = true;
       var credentials = {
         user: {
@@ -28,7 +32,12 @@ export default {
 
       auth.login(credentials)
       .then((response) => {
-        router.go('/dashboard')
+        if( response.data.role == 'pro') {
+          router.go('/dashboard')
+        }
+        else {
+          router.go('/tenant/dashboard')
+        }
       })
       .catch((error) => {
         errors = _.map(error.data.errors, (error) => {

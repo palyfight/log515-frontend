@@ -2,13 +2,14 @@ import Property from '../../services/property';
 
 export default {
   ready () {
-    this.getProperties();
+    this.getUserProperties();
   },
 
   data () {
     return {
       properties: [],
       property: {
+        id: '',
         address: '',
         postalCode: '',
         nbAppartments: '',
@@ -19,15 +20,16 @@ export default {
 
   methods: {
 
-    getProperties () {
+    getUserProperties () {
       const userId = localStorage.getItem('userId');
       const role = localStorage.getItem('role');
 
-      Property.getAllProperties( userId, role)
+      Property.getUserProperties( userId, role)
       .then((response) => {
         let properties = _.map(response.data, (property) => {
           this.properties.push({
             "id": property.idProperty,
+            "address": property.address,
             "postalCode": property.postalCode,
             "nbAppartments": property.nbAppartments,
             "description" : property.description,
@@ -39,11 +41,12 @@ export default {
       })
     },
 
-    claimProperty ( propertyId ) {
+    unclaimProperty ( propertyId ) {
       const userId = localStorage.getItem('userId');
 
-      Property.claimProperty( userId, propertyId )
+      Property.unclaimProperty( userId, propertyId )
       .then((response) => {
+        console.log(response);
       })
       .catch((error) => {
         this.$dispatch('app-error', { title: 'Internal Error', text: 'Please communicate with our support team' });

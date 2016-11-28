@@ -1,10 +1,12 @@
 import Admin from './components/Admin.vue';
+import Tenant from './components/Tenant.vue';
 import Signup from './components/Signup.vue';
 import Login from './components/Login.vue';
 import DashboardIndex from './components/Dashboard/Index.vue';
 import PropertiesIndex from './components/Properties/Properties.vue';
 import PropertiesShow from './components/Properties/Property.vue';
 import MessagesIndex from './components/Messages/Index.vue';
+import MyPropertyIndex from './components/Properties/MyProperty.vue';
 import auth from './services/auth';
 
 class Router {
@@ -30,6 +32,33 @@ class Router {
         guest: true
       },
 
+      '/tenant': {
+        component: Tenant,
+        auth: true,
+        subRoutes: {
+          '/dashboard': {
+            component: DashboardIndex,
+            auth: true
+          },
+          '/properties': {
+            component: PropertiesIndex,
+            auth: true
+          },
+          '/properties/:id': {
+            component: PropertiesShow,
+            auth: true
+          },
+          '/messages': {
+            component: MessagesIndex,
+            auth: true
+          },
+          '/myproperties': {
+            component: MyPropertyIndex,
+            auth: true
+          }
+        }
+      },
+
       '/admin': {
         component: Admin,
         auth: true,
@@ -48,6 +77,10 @@ class Router {
           },
           '/messages': {
             component: MessagesIndex,
+            auth: true
+          },
+          '/myproperties': {
+            component: MyPropertyIndex,
             auth: true
           }
         }

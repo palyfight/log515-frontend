@@ -60,6 +60,7 @@ export default {
     localStorage.removeItem('userId');
     localStorage.removeItem('username');
     localStorage.removeItem('phone');
+    localStorage.removeItem('role');
     this.user.authenticated = false;
     this.user.id = null;
     this.user.hasShops = false;

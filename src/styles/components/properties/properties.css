@@ -9,3 +9,9 @@
 .panel .table tr {
   cursor: pointer;
 }
+
+
+.remove-occupants {
+  color: #d9534f;
+  cursor: pointer;
+}
