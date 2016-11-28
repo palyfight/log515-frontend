@@ -1,64 +1,84 @@
-$(function(){
+import auth from '../../services/auth';
 
-  var contentHeight = $('#content').height();
-  var chatInboxHeight = contentHeight - 178;
-  var chatContentHeight = contentHeight - 178 - 200;
 
-  var setChatHeight = function() {
-    $('#chat-inbox').css('height', chatInboxHeight);
-    $('#chat-content').css('height', chatContentHeight);
-  };
+export default {
+  ready() {
+    this.socket = new WebSocket(`ws://localhost:1738/chat?user=${localStorage.getItem("username")}/`);
+    this.socket.onopen = function (event) { 
+      console.log("Connection WebSocket Established");
+    }
 
-  setChatHeight();
+    this.socket.onmessage = (message) => {
+        const payload = JSON.parse(message.data)
+        if(payload.userlist.indexOf(localStorage.getItem("username")) != 0)
+        {
+          this.messages.push({ message: payload.userMessage, name: payload.userlist.replace("/",""), type: 'message received'});
+        }
+    }
 
-  $(window).resize(function() {
-    contentHeight = $('#content').height();
-    chatInboxHeight = contentHeight - 178;
-    chatContentHeight = contentHeight - 178 - 200;
+    var contentHeight = $('#content').height();
+    var chatInboxHeight = contentHeight - 178;
+    var chatContentHeight = contentHeight - 178 - 200;
+
+    var setChatHeight = function() {
+      $('#chat-inbox').css('height', chatInboxHeight);
+      $('#chat-content').css('height', chatContentHeight);
+    };
 
     setChatHeight();
-  });
 
-  $("#chat-inbox").niceScroll({
-    cursorcolor: '#000000',
-    zindex: 999999,
-    bouncescroll: true,
-    cursoropacitymax: 0.4,
-    cursorborder: '',
-    cursorborderradius: 0,
-    cursorwidth: '5px'
-  });
+    $(window).resize(function() {
+      contentHeight = $('#content').height();
+      chatInboxHeight = contentHeight - 178;
+      chatContentHeight = contentHeight - 178 - 200;
+      setChatHeight();
+    });
 
-  $("#chat-content").niceScroll({
-    cursorcolor: '#000000',
-    zindex: 999999,
-    bouncescroll: true,
-    cursoropacitymax: 0.4,
-    cursorborder: '',
-    cursorborderradius: 0,
-    cursorwidth: '5px'
-  });
+    $("#chat-inbox").niceScroll({
+      cursorcolor: '#000000',
+      zindex: 999999,
+      bouncescroll: true,
+      cursoropacitymax: 0.4,
+      cursorborder: '',
+      cursorborderradius: 0,
+      cursorwidth: '5px'
+    });
 
-  $('#chat-inbox .chat-actions > span').tooltip({
-    placement: 'top',
-    trigger: 'hover',
-    html : true,
-    container: 'body'
-  });
+    $("#chat-content").niceScroll({
+      cursorcolor: '#000000',
+      zindex: 999999,
+      bouncescroll: true,
+      cursoropacitymax: 0.4,
+      cursorborder: '',
+      cursorborderradius: 0,
+      cursorwidth: '5px'
+    });
 
-  $('#initialize-search').click(function(){
-    $('#chat-search').toggleClass('active').focus();
-  });
+    $('#chat-inbox .chat-actions > span').tooltip({
+      placement: 'top',
+      trigger: 'hover',
+      html : true,
+      container: 'body'
+    });
 
-  $(document).click(function(e) {
-    if (($(e.target).closest("#initialize-search").attr("id") != "initialize-search") && $(e.target).closest("#chat-search").attr("id") != "chat-search") {
-      $('#chat-search').removeClass('active');
+    $(window).mouseover(function() {
+      $("#chat-inbox").getNiceScroll().resize();
+      $("#chat-content").getNiceScroll().resize();
+    });
+  },
+  data: function () {
+       return {
+         socket: '',
+         message: '',
+         username: localStorage.getItem("username"),
+         messages: []
+      }
+  },
+  methods: {
+    sendMessage() {
+        this.socket.send(this.message);
+        this.messages.push({ message: this.message, name: this.username, type: 'message sent'});
+        this.message = "";
     }
-  });
-
-  $(window).mouseover(function() {
-    $("#chat-inbox").getNiceScroll().resize();
-    $("#chat-content").getNiceScroll().resize();
-  });
-
-})
+  } 
+} 
