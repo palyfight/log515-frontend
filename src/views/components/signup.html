@@ -1,65 +1,45 @@
-<div class="login-content"> 
-<!-- Register -->
-  <div class="lc-block" id="l-register">
-    <div class="login-content-heading m-b-20">
-      <img src="dist/assets/img/karzen_logo.png" alt="karzen-logo" width="269px" height="70px">
-      <br/>
-      <span>Get an account, we provide simplicity</span>
-    </div>
-    <validator name="signupValidation" @touched="onTouched">
-      <form class="form-horizontal" novalidate v-on:submit.prevent>
-        <error-messages></error-messages>
-        <div  id="error-messages" class="alert alert-danger" v-show="shopSignupSubmitted && $signupValidation.invalid">
-          <ul>
-            <li v-for="error in $signupValidation.errors">
-              <p>{{error.message}}</p>
-            </li>
-          </ul>
-        </div>
-        <div class="lcb-form p-relative">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="input-group fg-float m-b-20">
-                <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
-                <div class="fg-line" v-bind:class="{'fg-toggled': user.firstName != '' }">
-                    <input v-model="user.firstName" name="firstName" field="user.firstName" v-validate:Firstname="{ required: { rule: true, message: 'First Name is required' } }" type="text" class="form-control"/>
-                    <label class="fg-label">First Name</label>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="input-group fg-float m-b-20">
-                <span class="input-group-addon last"><i class="zmdi zmdi-account"></i></span>
-                <div class="fg-line" v-bind:class="{'fg-toggled': user.lastName != '' }">
-                    <input v-model="user.lastName" name="lastName" field="user.lastName" v-validate:Lastname="{ required: { rule: true, message: 'Last Name is required' } }" type="text" class="form-control"/>
-                    <label class="fg-label">Last Name</label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="input-group fg-float m-b-20">
-            <span class="input-group-addon last"><i class="zmdi zmdi-email"></i></span>
-            <div class="fg-line" v-bind:class="{'fg-toggled': user.email != '' }">
-              <input v-model="user.email" name="email" field="user.email" v-validate:Email="{ required: { rule: true, message: 'Email is required' }, email: { rule: true, message: 'Email is invalid' } }" type="email" class="form-control"/>
-              <label class="fg-label">Email</label>
-            </div>
-          </div>
-          <div class="input-group fg-float m-b-20">
-            <span class="input-group-addon last"><i class="zmdi zmdi-key"></i></span>
-            <div class="fg-line" v-bind:class="{'fg-toggled': user.password != '' }">
-              <input v-model="user.password" name="password" field="user.password" v-validate:Password="{required: { rule: true, message: 'A password is required' }, minlength: { rule: 8, message: 'The password needs to be at least 8 characters long.' } }" type="password" class="form-control"/>
-              <label class="fg-label">Password</label>
-            </div>
-          </div>
+<div id="content" class="col-md-12 full-page login">
+  <div class="inside-block">
+    <h1 style="font-size:72px"><strong>L & T</strong></h1>
+    <h1><strong>L & T</strong> COMM</h1>
+    <h5>The easy way to communicate</h5>
 
-          <button class="btn btn-login btn-success btn-float" @click="submit()"><i class="zmdi zmdi-arrow-forward"></i></button>
+    <form novalidate v-on:submit.prevent>
+      <section>
+        <div class="input-group">
+          <input type="text" v-model="user.username" field="user.username" class="form-control" name="username"/>
+          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+        </div>
+        <div class="input-group">
+          <input type="text" v-model="user.phone" field="user.phone" class="form-control" name="phone"/>
+          <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+        </div>
+        <div class="input-group">
+          <input type="email" v-model="user.email" field="user.email" class="form-control" name="email"/>
+          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+        </div>
+        <div class="input-group">
+          <input type="password" v-model="user.password" field="user.password" class="form-control" name="password"/>
+          <div class="input-group-addon"><i class="fa fa-key"></i></div>
         </div>
 
-        <div class="lcb-navigation">
-          <a v-link="{name: 'login'}" data-ma-block="#l-login"><i class="zmdi zmdi-long-arrow-right"></i> <span>Log in</span></a>
+        <div class="form-group">
+          <label class="control-label">Vous êtes ou ?</label>
+          <div class="radio radio-transparent">
+            <input type="radio" name="locataire" id="locataire" v-model="user.role" value="loc" checked>
+            <label for="locataire">Locataire</label>
+          </div>
+          <div class="radio radio-transparent">
+            <input type="radio" name="proprietaire" id="proprietaire" v-model="user.role" value="pro">
+            <label for="proprietaire">Propriétaire</label>
+          </div>
         </div>
-      </form>
-    </validator>
+      </section>
+      <section class="log-in">
+        <a v-link="{name: 'login'}" class="btn btn-slategray" data-ma-block="#l-register">Login</a>
+        <span>or</span>
+        <button class="btn btn-greensea" @click="submit()">Register</button>
+      </section>
+    </form>
   </div>
 </div>
-

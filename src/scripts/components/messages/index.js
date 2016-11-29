@@ -4,10 +4,10 @@ import auth from '../../services/auth';
 export default {
   ready() {
     this.socket = new WebSocket(`ws://localhost:1738/chat?user=${localStorage.getItem("username")}/`);
-    this.socket.onopen = function (event) { 
+    this.socket.onopen = function (event) {
       console.log("Connection WebSocket Established");
     }
-
+    this.role = localStorage.getItem("role");
     this.socket.onmessage = (message) => {
         const payload = JSON.parse(message.data)
         if(payload.userlist.indexOf(localStorage.getItem("username")) != 0)
@@ -67,12 +67,13 @@ export default {
     });
   },
   data: function () {
-       return {
-         socket: '',
-         message: '',
-         username: localStorage.getItem("username"),
-         messages: []
-      }
+    return {
+      socket: '',
+      message: '',
+      username: localStorage.getItem("username"),
+      messages: [],
+      role: ''
+    }
   },
   methods: {
     sendMessage() {
@@ -80,5 +81,5 @@ export default {
         this.messages.push({ message: this.message, name: this.username, type: 'message sent'});
         this.message = "";
     }
-  } 
-} 
+  }
+}

@@ -1,4 +1,3 @@
-const SIGNUP_URL = '/v1/users/register'
 const LOGIN_URL = '/login'
 
 export default {
@@ -9,7 +8,6 @@ export default {
   },
 
   login (creds) {
-    console.log(creds)
     return new Promise ((resolve, reject) => {
       http.post(LOGIN_URL + '/' + creds.user.email + '/' + creds.user.password, creds)
       .then((response) => {
@@ -30,17 +28,16 @@ export default {
   },
 
   signup (creds) {
+    console.log(creds);
     return new Promise((resolve, reject) => {
-      http.post(SIGNUP_URL, creds)
+      http.post(`/signup/${creds.user.username}/${creds.user.password}/${creds.user.phone}/${creds.user.role}/${creds.user.email}`)
       .then((response) => {
-        // Login the user
         var credentials = {
           user: {
-            email: creds.user.email,
+            email: creds.user.username,
             password: creds.user.password
           }
         }
-
         this.login(credentials)
         .then((response) => {
           resolve(response)

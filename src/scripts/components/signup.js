@@ -23,28 +23,25 @@ export default {
       this.shopSignupSubmitted = true;
       var credentials = {
         user: {
-          first_name: this.user.firstName,
-          last_name: this.user.lastName,
+          username: this.user.username,
+          password: this.user.password,
           email: this.user.email,
-          password: this.user.password
+          phone: this.user.phone,
+          role: this.user.role
         }
       }
-      
-      const hasErrors = this.$signupValidation.errors && this.$signupValidation.errors.length > 0;
 
-      if (!hasErrors) {
-        auth.signup(credentials)
-        .then((response) => {
-          router.go('/dashboard')
-        })
-        .catch((error) => {
-          let errors = _.map(error.data.errors, (error) => {
-            return error.message;
-          });
-
-          this.$broadcast('error-messages', errors);
+      auth.signup(credentials)
+      .then((response) => {
+        router.go('/dashboard')
+      })
+      .catch((error) => {
+        let errors = _.map(error.data.errors, (error) => {
+          return error.message;
         });
-      }
+
+        this.$broadcast('error-messages', errors);
+      });
     },
 
     onTouched: function (touched) {

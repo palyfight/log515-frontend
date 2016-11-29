@@ -1,69 +1,29 @@
 <div id="content" class="col-md-12 chat">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- content main container -->
   <div class="main">
-
-    <!-- row -->
     <div class="row">
-
       <div class="col-lg-12 col-md-12 col-sm-12">
-        <!-- tile -->
         <section class="tile transparent">
-          <!-- tile header -->
+          <a href="mailto:someone@example.com?Subject=Hello%20again" class="btn btn-danger margin-bottom-20" v-if="role == 'loc'" target="_top">Send email to landlord</a>
           <div class="tile-header color bg-transparent-black-5 rounded-corners">
             <ul class="chat-nav side-nav inline">
               <li><h3><strong>Messages</strong></h3></li>
             </ul>
           </div>
-          <!-- /tile header -->
-
-
-          <!-- tile body -->
           <div class="tile-body transparent nopadding">
-
             <div class="chat-content" id="chat-content">
               <ul class="chat-list">
-
-                
-
-                    <li class={{message.type}} v-for="message in messages" track-by="$index" >
-                      <div class="media">
-                        <div class="media-body">
-                          <p class="media-heading"><a>{{ message.name }}</a> </p>
-                          {{ message.message }}
-                        </div>
-                      </div>
-                    </li>
-
-       
-
+                <li class={{message.type}} v-for="message in messages" track-by="$index" >
+                  <div class="media">
+                    <div class="media-body">
+                      <p class="media-heading"><a>{{ message.name }}</a> </p>
+                      {{ message.message }}
+                    </div>
+                  </div>
+                </li>
               </ul>
             </div>
-
           </div>
-          <!-- /tile body -->
-
-
-
-
-          <!-- tile footer -->
           <div class="tile-footer transparent nopadding">
-
             <div class="chat-reply" id="chat-reply">
               <form novalidate v-on:submit.prevent>
                 <div class="form-group">
@@ -74,32 +34,9 @@
                 <button type="button" class="btn btn-transparent-white last pull-right" @click="sendMessage()">Reply</button>
               </div>
             </div>
-
           </div>
-          <!-- /tile footer -->
-
-
         </section>
-        <!-- /tile -->
-
-
-
       </div>
-
-
     </div>
-    <!-- /row -->
-
-
-
-
   </div>
-  <!-- /content container -->
-
-
-
-
-
-
 </div>
-<!-- Page content end -->

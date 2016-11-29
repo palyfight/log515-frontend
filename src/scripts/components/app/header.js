@@ -6,6 +6,7 @@ export default {
 
   data () {
     return {
+      username: localStorage.getItem('username') || "Bonjour"
     }
   },
 
